@@ -17,7 +17,9 @@ namespace app1
             //CheckDotInRange();
             //CheckDotInRangeAndInSquare();
             //NumberDivision();
-            CheckBit();
+            //CheckBit();
+            //ChangeBit();
+            CheckPrime();
         }
 
         static void CheckYears() // Добавяне на 10 години към вписаните
@@ -57,7 +59,7 @@ namespace app1
 
         static void CheckThird() // Проверка дали третата цифра на цяло число(от дясно на ляво) е 7
         {
-            int x,y;
+            int x;
             string number;
             number = Console.ReadLine();
             x = (int.Parse(number) / 100) % 10;
@@ -157,6 +159,46 @@ namespace app1
             Console.Write((mask & n) !=0 ? "1 bit at that position" : "0 bits at that position"); // сравняваме го с битовете на числото, ако е вярно значи там има бит.
         }
 
-     
+        static void ChangeBit() //Променяме бит номер p, в числото n с бит v(0/1)
+        {
+            int n, p, v;
+            int i = 1;
+            Console.Write("Input a number: ");
+            n = Convert.ToInt32(Console.ReadLine());
+            Console.Write("Input the bit you want to change: ");
+            p = Convert.ToInt32(Console.ReadLine());
+            Console.Write("Input the value of the new bit 0/1: ");
+            v = Convert.ToInt32(Console.ReadLine());
+            if (v == 1)
+            {
+                int mask = i << p;
+                int result = mask | n; // ако на една и съща позиция на двете числа има поне една единица, значи е единица
+                Console.Write("n->"+n+" p->"+p+" v->"+v+" result = "+result);
+            }
+            else if (v == 0)
+            {
+                int mask = ~(i << p); //обръща преместването , така 1(0000 0001) става 1111 1110 и дефакто местим 0-та.
+                int result = mask & n; // ако на една и съща позиция на двете числа има единица е единица.
+                Console.Write("n->" + n + " p->" + p + " v->" + v + " result = " + result);
+            }
+            else
+            Console.Write("Wrong value for v!"); 
+        }
+        
+        static void CheckPrime() // Проверка дали дадено число е просто(дели се дели само на себе си и на единица без остатък)
+        {
+         
+            int n;
+            bool prime = true;
+            Console.Write("Ïnput a number: ");
+            n = int.Parse(Console.ReadLine());
+            if(n > 2)
+            for(int i = 2; i<=Math.Ceiling(Math.Sqrt(n));++i) // закръгляме и поставяме под корен
+                {
+                    if (n % i == 0) prime = false;
+                }
+            Console.WriteLine(prime == true ? "The number \""+n+"\" is a prime " : "The number \""+n+"\" is not a prime ");
+          
+        }
     }
 }
