@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Numerics;
 namespace app1
 {
     class Program
@@ -19,7 +20,13 @@ namespace app1
             //NumberDivision();
             //CheckBit();
             //ChangeBit();
-            CheckPrime();
+            //CheckPrime();
+            //PrintThree();
+            //Check5();
+            //TrySum5();
+            //printXNumbers();
+            //print1ToX();
+            Fibonacci();
         }
 
         static void CheckYears() // Добавяне на 10 години към вписаните
@@ -35,9 +42,9 @@ namespace app1
             DateTime futureYear = future.AddYears(yearsint); // futureYear = future + age
             int predict = futureYear.Year - today.Year; // futureYear - today = age + 10
             Console.WriteLine("Your age 10 years from now will be: " + predict);
-            
+
         }
-         static void CheckEven() // Проверка дали дадено цяло число е четно или нечетно
+        static void CheckEven() // Проверка дали дадено цяло число е четно или нечетно
         {
             string number;
             int x;
@@ -54,7 +61,7 @@ namespace app1
             Console.Write("Input a number to check if it divides by 5 and 7: ");
             number = Console.ReadLine();
             x = int.Parse(number) % 35; // 35 е най-малкото число, което се дели и на 5 и на 7
-            Console.WriteLine(x==0 ? "The number divides both by 5 and 7" : "The number does not divide by 5 and/or 7");
+            Console.WriteLine(x == 0 ? "The number divides both by 5 and 7" : "The number does not divide by 5 and/or 7");
         }
 
         static void CheckThird() // Проверка дали третата цифра на цяло число(от дясно на ляво) е 7
@@ -82,7 +89,7 @@ namespace app1
             b = float.Parse(Console.ReadLine());
             Console.Write("Input Height: ");
             h = float.Parse(Console.ReadLine());
-            Console.Write("The area of the trapezoid is: " + (a+b)*h/2);
+            Console.Write("The area of the trapezoid is: " + (a + b) * h / 2);
         }
 
         static void Rectangle() // Изчисли периметър и лице на правоъгълник по зададени страни a и b
@@ -92,14 +99,14 @@ namespace app1
             a = float.Parse(Console.ReadLine());
             Console.Write("Input side B: ");
             b = float.Parse(Console.ReadLine());
-            Console.WriteLine("Rectangle perimeter is: " + 2*(a+b));
-            Console.WriteLine("Rectangle area is: " + (a*b));
+            Console.WriteLine("Rectangle perimeter is: " + 2 * (a + b));
+            Console.WriteLine("Rectangle area is: " + (a * b));
         }
 
         static void WeightOnMoon() // Изчисли колко би тежал човек с дадено тегло на луната
         {
             Console.Write("Input your weight: ");
-           Console.Write("Your weight on the moon will be: " + float.Parse(Console.ReadLine()) * 0.17);
+            Console.Write("Your weight on the moon will be: " + float.Parse(Console.ReadLine()) * 0.17);
         }
 
         static void CheckDotInRange() // Проверка дали точка с дадена позиция {x,y} е в окръжността на K{0,0}, R=5.
@@ -107,10 +114,10 @@ namespace app1
             int x, y;
             const int Radius = 5;
             Console.Write("Input x: ");
-           x = Convert.ToInt32(Console.ReadLine());
+            x = Convert.ToInt32(Console.ReadLine());
             Console.Write("Input y: ");
             y = Convert.ToInt32(Console.ReadLine());
-            Console.Write(x*x + y*y <= Radius*Radius ? "Dot is in radius" : "Dot is not in radius" );
+            Console.Write(x * x + y * y <= Radius * Radius ? "Dot is in radius" : "Dot is not in radius");
         }
         static void CheckDotInRangeAndInSquare() // Проверка дали точка с дадена позиция {x,y} е в окръжността на K{0,0}, R=5 И в правоъгълник {-1,1} {5,5}
         {
@@ -142,7 +149,7 @@ namespace app1
             d = number % 10;
 
             Console.WriteLine(a + b + c + d); // сбор на всичките цифри
-            Console.WriteLine(d+""+c+""+b+""+a); // обръщаме числото
+            Console.WriteLine(d + "" + c + "" + b + "" + a); // обръщаме числото
             Console.WriteLine(d + "" + a + "" + b + "" + c); // последната цифра на място на първата
             Console.WriteLine(a + "" + c + "" + b + "" + d); // втората цифра на място на третата
         }
@@ -156,7 +163,7 @@ namespace app1
             Console.Write("Input the bit you want to check: ");
             p = Convert.ToInt32(Console.ReadLine());
             int mask = i << p; // преместваме единственият бит на 1(0000 0001) вляво с 'p' позиции
-            Console.Write((mask & n) !=0 ? "1 bit at that position" : "0 bits at that position"); // сравняваме го с битовете на числото, ако е вярно значи там има бит.
+            Console.Write((mask & n) != 0 ? "1 bit at that position" : "0 bits at that position"); // сравняваме го с битовете на числото, ако е вярно значи там има бит.
         }
 
         static void ChangeBit() //Променяме бит номер p, в числото n с бит v(0/1)
@@ -173,7 +180,7 @@ namespace app1
             {
                 int mask = i << p;
                 int result = mask | n; // ако на една и съща позиция на двете числа има поне една единица, значи е единица
-                Console.Write("n->"+n+" p->"+p+" v->"+v+" result = "+result);
+                Console.Write("n->" + n + " p->" + p + " v->" + v + " result = " + result);
             }
             else if (v == 0)
             {
@@ -182,23 +189,137 @@ namespace app1
                 Console.Write("n->" + n + " p->" + p + " v->" + v + " result = " + result);
             }
             else
-            Console.Write("Wrong value for v!"); 
+                Console.Write("Wrong value for v!");
         }
-        
+
         static void CheckPrime() // Проверка дали дадено число е просто(дели се дели само на себе си и на единица без остатък)
         {
-         
+
             int n;
             bool prime = true;
             Console.Write("Ïnput a number: ");
             n = int.Parse(Console.ReadLine());
-            if(n > 2)
-            for(int i = 2; i<=Math.Ceiling(Math.Sqrt(n));++i) // закръгляме и поставяме под корен
+            if (n > 2)
+                for (int i = 2; i <= Math.Ceiling(Math.Sqrt(n)); ++i) // закръгляме и поставяме под корен
                 {
                     if (n % i == 0) prime = false;
                 }
-            Console.WriteLine(prime == true ? "The number \""+n+"\" is a prime " : "The number \""+n+"\" is not a prime ");
-          
+            Console.WriteLine(prime == true ? "The number \"" + n + "\" is a prime " : "The number \"" + n + "\" is not a prime ");
+
+        }
+
+        static void PrintThree()/*Програма, която да принтира 3 числа(цяло число в шестнадесетична бр.сист, полож.дробно число и отрицателно дробно число) 
+            в 3 колони широки по 10 символа, всички числа трябва да са ляво подравнени като последните две числа трябва да се закръглят до втория знак*/
+        {
+            int hexNum = 2019;
+            double decNum = 3.528;
+            double negativeDecNum = -3.359;
+            Console.WriteLine("----------------------------------");
+            Console.WriteLine("|{0,-10:X}|{1,-10:f2}|{2,-10:f2}|", hexNum, decNum, negativeDecNum);
+            Console.WriteLine("----------------------------------");
+        }
+
+        static void Check5() //Взимаме 2 числа и проверяваме колко числа между тях се делят на 5 без остатък.
+            {
+            int x, y;
+            Console.Write("Input the first number: ");
+            x=int.Parse(Console.ReadLine());
+            Console.Write("Input the second number: ");
+            y=int.Parse(Console.ReadLine());
+            if(x>y)
+                for(int i = y;i<x;i++)
+                {
+                   if(i % 5 == 0)
+                  Console.WriteLine("Number " + i + " has no remainder after division");
+                }
+                    else if (x<y)
+                for (int i = x; i < y; i++)
+                {
+                    if (i % 5 == 0)
+                        Console.WriteLine("Number " + i + " has no remainder after division");
+                }
+            else
+            Console.WriteLine("the first and second number cannot hold the same value!");
+
+        }
+
+        static void TrySum5() //Прочитане на 5 числа от потребителя и валидирането им
+        {
+            int a, b, c, d, e;
+            bool parseSuccess = false;
+            do
+            {
+                Console.Write("Enter first number: ");
+                parseSuccess = int.TryParse(Console.ReadLine(), out a);
+                Console.WriteLine(parseSuccess);
+            } while (!parseSuccess);
+            do
+            {
+                Console.Write("Enter first number: ");
+                parseSuccess = int.TryParse(Console.ReadLine(), out b);
+                Console.WriteLine(parseSuccess);
+            } while (!parseSuccess);
+            do
+            {
+                Console.Write("Enter first number: ");
+                parseSuccess = int.TryParse(Console.ReadLine(), out c);
+                Console.WriteLine(parseSuccess);
+            } while (!parseSuccess);
+            do
+            {
+                Console.Write("Enter first number: ");
+                parseSuccess = int.TryParse(Console.ReadLine(), out d);
+                Console.WriteLine(parseSuccess);
+            } while (!parseSuccess);
+            do
+            {
+                Console.Write("Enter first number: ");
+                parseSuccess = int.TryParse(Console.ReadLine(), out e);
+                Console.WriteLine(parseSuccess);
+            } while (!parseSuccess);
+
+            Console.WriteLine("Total Sum is: "+(a+b+c+d+e));
+
+        }
+
+        static void printXNumbers() //Потребителят иска да вкара X числа и да види общата им сума.
+        {
+            int n, total=0;
+            Console.Write("how many numbers you want to add: ");
+            n = int.Parse(Console.ReadLine());
+            for(int i=1;i<=n;i++)
+            {
+                Console.Write("add number "+i+" :");
+                total += int.Parse(Console.ReadLine());
+            }
+            Console.Write("Total sum is: "+total);
+        }
+
+        static void print1ToX() //Принтиране на всички числа от 1 до число което потребителя вкара.
+        {
+            int n;
+            Console.Write("Input a number: ");
+            int.TryParse(Console.ReadLine(),out n);
+            for(int i=1; i<=n;i++)
+            {
+                Console.WriteLine(i);
+            }
+        }
+
+        static void Fibonacci() //Изкарване на първите 100 числа от редицата на Фибоначи.
+        {
+            BigInteger x1 = 0;
+            BigInteger x2 = 1;
+            BigInteger sum;
+            Console.WriteLine(x1);
+            for (int i = 1; i < 100;i++)
+            {
+                sum = x1 + x2;
+                x1 = x2;
+                x2 = sum;
+                Console.WriteLine(x2);
+                   
+            }
         }
     }
 }
