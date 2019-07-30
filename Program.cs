@@ -24,11 +24,18 @@ namespace app1
             //PrintThree();
             //Check5();
             //TrySum5();
-            //printXNumbers();
-            //print1ToX();
-            Fibonacci();
-        }
+            //PrintXNumbers();
+            //Print1ToX();
+            //Fibonacci();
+            //Ifswap();
+            //CheckMinus();
+            //BiggestOfThree();
+            //SortThree();
+            //NumberWord();
+            //BiggestOfFive();
+            IntDoubleStr();
 
+        }
         static void CheckYears() // Добавяне на 10 години към вписаните
         {
             string years;
@@ -220,26 +227,26 @@ namespace app1
         }
 
         static void Check5() //Взимаме 2 числа и проверяваме колко числа между тях се делят на 5 без остатък.
-            {
+        {
             int x, y;
             Console.Write("Input the first number: ");
-            x=int.Parse(Console.ReadLine());
+            x = int.Parse(Console.ReadLine());
             Console.Write("Input the second number: ");
-            y=int.Parse(Console.ReadLine());
-            if(x>y)
-                for(int i = y;i<x;i++)
+            y = int.Parse(Console.ReadLine());
+            if (x > y)
+                for (int i = y; i < x; i++)
                 {
-                   if(i % 5 == 0)
-                  Console.WriteLine("Number " + i + " has no remainder after division");
+                    if (i % 5 == 0)
+                        Console.WriteLine("Number " + i + " has no remainder after division");
                 }
-                    else if (x<y)
+            else if (x < y)
                 for (int i = x; i < y; i++)
                 {
                     if (i % 5 == 0)
                         Console.WriteLine("Number " + i + " has no remainder after division");
                 }
             else
-            Console.WriteLine("the first and second number cannot hold the same value!");
+                Console.WriteLine("the first and second number cannot hold the same value!");
 
         }
 
@@ -278,29 +285,29 @@ namespace app1
                 Console.WriteLine(parseSuccess);
             } while (!parseSuccess);
 
-            Console.WriteLine("Total Sum is: "+(a+b+c+d+e));
+            Console.WriteLine("Total Sum is: " + (a + b + c + d + e));
 
         }
 
-        static void printXNumbers() //Потребителят иска да вкара X числа и да види общата им сума.
+        static void PrintXNumbers() //Потребителят иска да вкара X числа и да види общата им сума.
         {
-            int n, total=0;
+            int n, total = 0;
             Console.Write("how many numbers you want to add: ");
             n = int.Parse(Console.ReadLine());
-            for(int i=1;i<=n;i++)
+            for (int i = 1; i <= n; i++)
             {
-                Console.Write("add number "+i+" :");
+                Console.Write("add number " + i + " :");
                 total += int.Parse(Console.ReadLine());
             }
-            Console.Write("Total sum is: "+total);
+            Console.Write("Total sum is: " + total);
         }
 
-        static void print1ToX() //Принтиране на всички числа от 1 до число което потребителя вкара.
+        static void Print1ToX() //Принтиране на всички числа от 1 до число което потребителя вкара.
         {
             int n;
             Console.Write("Input a number: ");
-            int.TryParse(Console.ReadLine(),out n);
-            for(int i=1; i<=n;i++)
+            int.TryParse(Console.ReadLine(), out n);
+            for (int i = 1; i <= n; i++)
             {
                 Console.WriteLine(i);
             }
@@ -312,14 +319,164 @@ namespace app1
             BigInteger x2 = 1;
             BigInteger sum;
             Console.WriteLine(x1);
-            for (int i = 1; i < 100;i++)
+            for (int i = 1; i < 100; i++)
             {
                 sum = x1 + x2;
                 x1 = x2;
                 x2 = sum;
                 Console.WriteLine(x2);
-                   
+
             }
         }
+
+        static void Ifswap()
+        {
+            int a = 3;
+            int b = 5;
+            int c;
+            if (a > b)
+            {
+                c = a;
+                a = b;
+                b = c;
+            }
+        }
+
+        static void CheckMinus() // без да пресмята, проверява дали произведението на 3 числа е положително или отрицателно.
+        {
+            int a = 2;
+            int b = -3;
+            int c = 1;
+            int count = 0;
+
+            if (a < 0)
+                count++;
+            if (b < 0)
+                count++;
+            if (c < 0)
+                count++;
+
+            Console.Write(a != 0 && b != 0 && c != 0 ? (count % 2 == 0 ? "+" : "-") : "0");
+
+        }
+
+        static void BiggestOfThree()
+        {
+            int a = 22;
+            int b = 5;
+            int c = 7;
+
+            if (a < b) a = b;
+            if (a < c) a = c;
+            Console.Write("Biggest number is "+a);
+
+        } // провери, кое от 3те числа е най-голямо
+
+        static void SortThree()
+        {
+            int a = 12;
+            int b = 5;
+            int c = 27;
+
+            if (a > b)
+            {
+                if (a > c)
+                    Console.WriteLine(b + " " + c + " " + a);
+                else if (a < c)
+                    Console.WriteLine(b + " " + a + " " + c);
+            }
+
+            if (a < b)
+            {
+                if (b > c)
+                    Console.WriteLine(a + " " + c + " " + b);
+                else if (b < c)
+                    Console.WriteLine(a + " " + b + " " + b);
+            }
+        } // подредба на 3 числа от най-малко към най-голямо
+
+        static void NumberWord()
+        {
+            int x = int.Parse(Console.ReadLine());
+            switch (x)
+            {
+                case 1:
+                    Console.WriteLine("One");
+                    break;
+                case 2:
+                    Console.WriteLine("Two");
+                    break;
+                case 3:
+                    Console.WriteLine("Three");
+                    break;
+                case 4:
+                    Console.WriteLine("Four");
+                    break;
+                case 5:
+                    Console.WriteLine("Five");
+                    break;
+                case 6:
+                    Console.WriteLine("Six");
+                    break;
+                case 7:
+                    Console.WriteLine("Seven");
+                    break;
+                case 8:
+                    Console.WriteLine("Eight");
+                    break;
+                case 9:
+                    Console.WriteLine("Nine");
+                    break;
+
+                default:
+                    Console.WriteLine("This is not a valid number!");
+                    break;
+            }
+        } 
+
+        static void BiggestOfFive()
+        {
+            int a = 11;
+            int b = 5;
+            int c = 7;
+            int d = 12;
+            int e = 4;
+
+
+            if (a < b) a = b;
+            if (a < c) a = c;
+            if (a < d) a = d;
+            if (a < e) a = e;
+
+            Console.WriteLine("Biggest number is " + a);
+        }
+
+        static void IntDoubleStr()
+        {
+            Console.Write("Enter variable type (0 - int, 1 - double, 2 string): ");
+            int x = int.Parse(Console.ReadLine());
+
+            switch(x)
+            {
+                case 0:
+                    Console.Write("Input an integer: ");
+                    int a = int.Parse(Console.ReadLine());
+                    a++;
+                    Console.Write("New integer: {0} ",a);
+                    break;
+                case 1:
+                    Console.Write("Input a double: ");
+                    double b = double.Parse(Console.ReadLine());
+                    b++;
+                    Console.Write("New double: {0} ", b);
+                    break;
+                case 2:
+                    Console.Write("Input a string: ");
+                    string c = Console.ReadLine();
+                    c += "*";
+                    Console.Write("New string: {0} ", c);
+                    break;
+            }
+        } //ако е int/double ++1 , ако е string се добавя "*" накрая.
     }
 }
