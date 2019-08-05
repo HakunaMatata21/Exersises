@@ -33,7 +33,8 @@ namespace app1
             //SortThree();
             //NumberWord();
             //BiggestOfFive();
-            IntDoubleStr();
+            //IntDoubleStr();
+            BonusPoints();
 
         }
         static void CheckYears() // Добавяне на 10 години към вписаните
@@ -478,5 +479,34 @@ namespace app1
                     break;
             }
         } //ако е int/double ++1 , ако е string се добавя "*" накрая.
+
+        static void BonusPoints()
+        {
+            int x;
+            Console.Write("Input a number (0-9): ");
+          x = int.Parse(Console.ReadLine());
+            if(x >= 1 && x <= 9)
+            {
+                if(x >= 1 && x <= 3)
+                {
+                    x *= 10;
+                    Console.WriteLine(x);
+                }
+                    else if(x >= 4 && x <= 6)
+                {
+                    x *= 100;
+                    Console.WriteLine(x);
+                }
+                        else if(x >= 7 && x <= 9)
+                {
+                    x *= 1000;
+                    Console.WriteLine(x);
+                }
+            }
+            else
+            {
+Console.Write("This is not a valid number!");
+            }
+        }
     }
 }
