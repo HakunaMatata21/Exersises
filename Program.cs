@@ -34,7 +34,12 @@ namespace app1
             //NumberWord();
             //BiggestOfFive();
             //IntDoubleStr();
-            BonusPoints();
+            //BonusPoints();
+            //DrawTriangle();
+            //PrintCycle();
+            //PrintCycle2();
+            //PrintSequence();
+            //PlayingCards();
 
         }
         static void CheckYears() // Добавяне на 10 години към вписаните
@@ -369,7 +374,7 @@ namespace app1
 
             if (a < b) a = b;
             if (a < c) a = c;
-            Console.Write("Biggest number is "+a);
+            Console.Write("Biggest number is " + a);
 
         } // провери, кое от 3те числа е най-голямо
 
@@ -433,7 +438,7 @@ namespace app1
                     Console.WriteLine("This is not a valid number!");
                     break;
             }
-        } 
+        }
 
         static void BiggestOfFive()
         {
@@ -457,13 +462,13 @@ namespace app1
             Console.Write("Enter variable type (0 - int, 1 - double, 2 string): ");
             int x = int.Parse(Console.ReadLine());
 
-            switch(x)
+            switch (x)
             {
                 case 0:
                     Console.Write("Input an integer: ");
                     int a = int.Parse(Console.ReadLine());
                     a++;
-                    Console.Write("New integer: {0} ",a);
+                    Console.Write("New integer: {0} ", a);
                     break;
                 case 1:
                     Console.Write("Input a double: ");
@@ -484,20 +489,20 @@ namespace app1
         {
             int x;
             Console.Write("Input a number (0-9): ");
-          x = int.Parse(Console.ReadLine());
-            if(x >= 1 && x <= 9)
+            x = int.Parse(Console.ReadLine());
+            if (x >= 1 && x <= 9)
             {
-                if(x >= 1 && x <= 3)
+                if (x >= 1 && x <= 3)
                 {
                     x *= 10;
                     Console.WriteLine(x);
                 }
-                    else if(x >= 4 && x <= 6)
+                else if (x >= 4 && x <= 6)
                 {
                     x *= 100;
                     Console.WriteLine(x);
                 }
-                        else if(x >= 7 && x <= 9)
+                else if (x >= 7 && x <= 9)
                 {
                     x *= 1000;
                     Console.WriteLine(x);
@@ -505,8 +510,139 @@ namespace app1
             }
             else
             {
-Console.Write("This is not a valid number!");
+                Console.Write("This is not a valid number!");
             }
+        }
+
+        static void DrawTriangle()
+        {
+            Console.Write("Please input a number: ");
+            int n = int.Parse(Console.ReadLine());
+
+            for (int row = 1; row <= n; row++) // външният цикъл ще обхожда редовете
+            {
+                for (int col = 1; col <= row; col++) // вътрешният цикъл ще обхожда колоните от текущият ред
+                {
+                    Console.Write(col + " ");
+                }
+                Console.WriteLine();
+            }
+        }
+
+        static void PrintCycle()
+        {
+            Console.Write("Input a number: ");
+            int x = int.Parse(Console.ReadLine());
+            for(int i = 1;i<=x;i++)
+            {
+                Console.Write(i + " ");
+            }
+        }
+
+        static void PrintCycle2()
+        {
+            Console.Write("Input a number: ");
+            int x = int.Parse(Console.ReadLine());
+            for(int i = 1 ; i < x; i++)
+            {
+                if( i % (3*7) != 0)
+                {
+                    Console.WriteLine(i);
+                }
+            }
+        }
+
+        static void PrintSequence()
+        {
+            int highest = int.MinValue;
+            int lowest = int.MaxValue;
+            Console.Write("How many numbers are you gonna input: ");
+            int number = int.Parse(Console.ReadLine());
+            for(int i = 1;i<=number; i++)
+            {
+                Console.Write("Input a number: ");
+                int x = int.Parse(Console.ReadLine());
+                if (x > highest) highest = x;
+                if (x < lowest) lowest = x;
+            }
+            Console.WriteLine("The lowest number is: "+ lowest+ " And the highest number is: "+highest);
+        }
+
+        static void PlayingCards()
+        {
+            //4 boi 13 karti 2 cikyla
+
+            for(int i = 1;i<=4;i++) //външен цикъл за боите
+            {
+            for (int u = 1;u<=13;u++)
+                {
+
+                    switch (i)
+                    {
+                        case 1:
+                            Console.Write("pika ");
+                            break;
+                        case 2:
+                            Console.Write("spatiq ");
+                            break;
+                        case 3:
+                            Console.Write("karo ");
+                            break;
+                        case 4:
+                            Console.Write("kupa ");
+                            break;
+                    }
+
+                    switch (u)
+                    {
+                        case 1:
+                            Console.WriteLine("2");
+                            break;
+                        case 2:
+                            Console.WriteLine("3");
+                            break;
+                        case 3:
+                            Console.WriteLine("4");
+                            break;
+                        case 4:
+                            Console.WriteLine("5");
+                            break;
+                        case 5:
+                            Console.WriteLine("6");
+                            break;
+                        case 6:
+                            Console.WriteLine("7");
+                            break;
+                        case 7:
+                            Console.WriteLine("8");
+                            break;
+                        case 8:
+                            Console.WriteLine("9");
+                            break;
+                        case 9:
+                            Console.WriteLine("10");
+                            break;
+                        case 10:
+                            Console.WriteLine("J");
+                            break;
+                        case 11:
+                            Console.WriteLine("Q");
+                            break;
+                        case 12:
+                            Console.WriteLine("K");
+                            break;
+                        case 13:
+                            Console.WriteLine("A");
+                            break;
+                    }
+                }
+            }
+        }
+
+        static void PrintSequence3()
+        {
+         
+
         }
     }
 }
